@@ -2,8 +2,6 @@
 A library for easily creating ROBOTC programs for your robot.
 Originally created by Caleb Jeppesen.
 
-The library assumes that you are using motors D and E. Feel free to change the code in order to make suit your needs.
-
 Licensed under MIT (see LICENSE).
 */
 
@@ -16,7 +14,7 @@ int motors[];
 int tright[];
 int tleft[];
 
-void setup(int[] drive, int[] turnl, int[] turnr, bool turndrive) {
+void setup(int drive[], int turnl[], int turnr[], bool turndrive) {
 	turn_act_as_drive = turndrive;
 	motors = drive;
 	tleft = turnl;
@@ -37,7 +35,7 @@ void moveAll(int value) {
 	}
 }
 
-void stop() {
+void stopAll() {
 	moveAll(0);
 }
 
@@ -57,6 +55,10 @@ void turn(bool dir, int value) {
 			motor[tleft[i]] = value;
 		}
 	}
+}
+
+void move(int mtr, int value) {
+	motor[mtr] = value;
 }
 
 int length(int[] array) {
