@@ -28,13 +28,14 @@ task main()
 {
 	//setup RobLib
 	struct arrayInt driveMotors;
-	int arr1[2] = {motorA, motorB};
+	int arr1[2] = {motorD, motorE};
 	driveMotors.array = arr1;
 	struct arrayInt turnrMotors;
-	int arr2[2] = {motorB, motorC};
+	int arr2[2] = {motorE, motorD};
 	turnrMotors.array = arr2;
 	struct arrayInt turnlMotors;
 	turnlMotors.array = arr2;
+	setup(driveMotors, 2, turnrMotors, turnlMotors, 2, true);
 
   while(true)                            // Infinite loop:
   {
