@@ -37,17 +37,17 @@ task main()
 	turnlMotors.array = arr2;
 	setup(driveMotors, 2, turnrMotors, turnlMotors, 2, true);
 
-  while(true)                            // Infinite loop:
-  {
-    getJoystickSettings(joystick);
+	while(true)                            // Infinite loop:
+	{
+		getJoystickSettings(joystick);
 
-    moveAll(50);
-    wait10Msec(100);
-    rstopAll();
-    wait10Msec(50);
-    turn(DIR_LEFT, 100);
-    wait10Msec(10);
-    rstopAll();
-    wait10Msec(200);
-  }
+		moveAll(50);
+		wait10Msec(100);
+		rstopAll();
+		wait10Msec(50);
+		turn(DIR_LEFT, 100);
+		wait10Msec(10);
+		rstopAll();
+		wait10Msec(200);
+	}
 }
