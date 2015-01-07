@@ -41,6 +41,13 @@ task main()
   {
     getJoystickSettings(joystick);
 
-    
+    moveAll(50);
+    wait10Msec(100);
+    rstopAll();
+    wait10Msec(50);
+    turn(DIR_LEFT, 100);
+    wait10Msec(10);
+    rstopAll();
+    wait10Msec(200);
   }
 }
