@@ -2,7 +2,9 @@
 A library for easily creating ROBOTC programs for your robot.
 Originally created by Caleb Jeppesen.
 
-Licensed under MIT (see LICENSE).
+Last updated on 1/6/15.
+
+Licensed under MIT (see file LICENSE).
 */
 
 //constants
@@ -34,7 +36,9 @@ int motors[MAX_MOTOR_ARRAY_SIZE];
 int tright[MAX_MOTOR_ARRAY_SIZE];
 int tleft[MAX_MOTOR_ARRAY_SIZE];
 
-//sets up the library
+/**
+sets up the library
+*/
 void setup(struct arrayInt drive, int numDrive, struct arrayInt turnl, struct arrayInt turnr, int numTurn, bool turndrive) {
 	turn_acts_as_drive = turndrive;
 	numDriveMotors = numDrive;
@@ -86,4 +90,11 @@ void turn(bool dir, int value) {
 //makes the specified motor move
 void move(int mtr, int value) {
 	motor[mtr] = value;
+}
+
+//TODO: Better servo support
+
+//moves a servo to specified position
+void moveServo(int srv, int pos) {
+	servo[srv] = pos;
 }
