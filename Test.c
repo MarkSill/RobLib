@@ -26,28 +26,30 @@
 
 task main()
 {
-	//setup RobLib
-	struct arrayInt driveMotors;
-	int arr1[2] = {motorD, motorE};
-	driveMotors.array = arr1;
-	struct arrayInt turnrMotors;
-	int arr2[2] = {motorE, motorD};
-	turnrMotors.array = arr2;
-	struct arrayInt turnlMotors;
-	turnlMotors.array = arr2;
-	setup(driveMotors, 2, turnrMotors, turnlMotors, 2, true);
+  //setup RobLib
+  arrayInt driveMotors;
+  int arr1[2] = {motorD, motorE};
+  driveMotors.array = arr1;
+  arrayInt turnrMotors;
+  int arr2[2] = {motorE, motorD};
+  turnrMotors.array = arr2;
+  arrayInt turnlMotors;
+  turnlMotors.array = arr2;
+  setup(driveMotors, 2, turnrMotors, turnlMotors, 2, true);
+	
+	//autonomous code would go here
+  moveAll(50);
+  wait1Msec(1000);
+  rstopAll();
+  wait1Msec(500);
+  turn(DIR_LEFT, 100);
+  wait1Msec(100);
+  rstopAll();
+  wait1Msec(2000);
 
-	while(true)                            // Infinite loop:
-	{
-		getJoystickSettings(joystick);
-
-		moveAll(50);
-		wait10Msec(100);
-		rstopAll();
-		wait10Msec(50);
-		turn(DIR_LEFT, 100);
-		wait10Msec(10);
-		rstopAll();
-		wait10Msec(200);
-	}
+  while(true) //this is where driver-controlled period code goes
+  {
+    getJoystickSettings(joystick);
+    
+  }
 }
