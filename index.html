@@ -34,44 +34,51 @@
         <h1>
 <a id="roblib" class="anchor" href="#roblib" aria-hidden="true"><span class="octicon octicon-link"></span></a>RobLib</h1>
 
-<p>A library meant for making ROBOTC programs more easily.
-The library was created by Caleb Jeppesen in the year of 2014 for his school's robotics team.</p>
+<p>A library meant for making ROBOTC programs more easily.</p>
 
 <h1>
 <a id="functions" class="anchor" href="#functions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Functions</h1>
 
-<p>void setup(struct intArray drive, int numDrive, struct intArray turnl, struct intArray turnr, int numTurn, bool turndrive):
+<p><code>void setup(struct intArray drive, int numDrive, struct intArray turnl, struct intArray turnr, int numTurn, bool turndrive)</code>:
 Setups the library using specified parameters.</p>
 
-<p>void moveAll(int value):
+<p><code>void moveAll(int value)</code>:
 Turns drive motors with the specified speed. Also moves turn motors if turn_acts_as_drive (turndrive) is true.</p>
 
-<p>void rstopAll():
+<p><code>void rstopAll()</code>:
 Stops all motors (stopAll seems to be used by ROBOTC).</p>
 
-<p>void move(int mtr, int value):
+<p><code>void move(int mtr, int value)</code>:
 Moves the specified motor with the specified value.</p>
 
-<p>void moveServo(int srv, int pos):
-  Moves the specified servo to the specified position.
-</p>
+<p><code>void setupServos(arrayInt servoss, arrayInt defaults, int size)</code>:
+Sets up the servos for use.</p>
 
-<p>void setDebug(bool newVal):
-  Sets the debug variable to the new value.
-</p>
+<p><code>void moveServo(int srv, int pos)</code>:
+Moves the specified servo to the specified position.</p>
 
-<p>void invertBool(bool &toInvert):
-  Inverts the given boolean.
-</p>
+<p><code>void incrementServo(int srv, bool dir)</code>:
+Increments (or decrements) the specified servo.</p>
 
-<p>debugmsg(char *msg):
-  Sends a message to the output stream.
-</p>
+<p><code>void resetServos()</code>:
+Resets the servos to their default positions.</p>
+
+<p><code>void resetServo(int srv)</code>:
+Resets the specified servo to its default position.</p>
+
+<p><code>void setDebug(bool newVal)</code>:
+Sets the debug variable to the new value.</p>
+
+<p><code>void invertBool(bool &amp;toInvert)</code>:
+Inverts the given boolean.</p>
+
+<p><code>void debugmsg(char *msg)</code>:
+Sends a message to the output stream.</p>
 
 <h1>
 <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h1>
 
-<p>See the <a href="https://github.com/MarkSill/RobLib/wiki">wiki</a> for usage.</p>
+<p>See the wiki for usage.</p>
       </section>
     </div>
 
