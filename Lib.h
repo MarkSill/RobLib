@@ -13,20 +13,25 @@ bool const DIR_LEFT = false;
 int const MAX_MOTOR_ARRAY_SIZE = 8;
 
 //required for passing arrays through functions, as ROBOTC does not support that for some reason
-struct arrayInt {
+typedef struct {
 	int array[MAX_MOTOR_ARRAY_SIZE];
 	byte arrays_dont_work_in_robotc;
-};
+} arrayInt;
 
 //function declearations
-void setup(struct arrayInt drive, int numDrive, struct arrayInt turnl, struct arrayInt turnr, int numTurn, bool turndrive);
+void setup(arrayInt drive, int numDrive, arrayInt turnl, arrayInt turnr, int numTurn, bool turndrive);
 void moveAll(int value);
 void rstopAll();
 void turn(bool dir, int value);
 void move(int mtr, int value);
+void setDebug(bool newVal);
+void invertBool(bool &toInvert);
+void debugmsg(char *msg);
 
 //tells the library if the turn motors also can be used for standard drive
 bool turn_acts_as_drive = true;
+//debug mode
+bool debug = false;
 //tells the library how many motors to iterate through
 int numDriveMotors;
 int numTurnMotors;
@@ -40,6 +45,9 @@ int tleft[MAX_MOTOR_ARRAY_SIZE];
 sets up the library
 */
 void setup(struct arrayInt drive, int numDrive, struct arrayInt turnl, struct arrayInt turnr, int numTurn, bool turndrive) {
+	if (debug) {
+		debugmsg("Setting up motors...");
+	}
 	turn_acts_as_drive = turndrive;
 	numDriveMotors = numDrive;
 	motors = drive.array;
@@ -50,6 +58,9 @@ void setup(struct arrayInt drive, int numDrive, struct arrayInt turnl, struct ar
 
 //makes all motors decleared as drive motors move
 void moveAll(int value) {
+	if (debug) {
+		debugmsg("Moving all motors...");
+	}
 	for (int i = 0; i < numDriveMotors; i++) {
 		motor[motors[i]] = value;
 	}
@@ -65,11 +76,17 @@ void moveAll(int value) {
 
 //stops all motors (stopAll seems to be used by ROBOTC)
 void rstopAll() {
+	if (debug) {
+		debugmsg("Stopping motors...");
+	}
 	moveAll(0);
 }
 
 //makes the turn motors move based on either DIR_RIGHT or DIR_LEFT
 void turn(bool dir, int value) {
+	if (debug) {
+		debugmsg("Turning...");
+	}
 	if (dir == DIR_RIGHT) {
 		for (int i = 0; i < numTurnMotors; i++) {
 			motor[tright[i]] = value;
@@ -89,6 +106,9 @@ void turn(bool dir, int value) {
 
 //makes the specified motor move
 void move(int mtr, int value) {
+	if (debug) {
+		debugmsg("Moving motor...");
+	}
 	motor[mtr] = value;
 }
 
@@ -96,5 +116,33 @@ void move(int mtr, int value) {
 
 //moves a servo to specified position
 void moveServo(int srv, int pos) {
+	if (debug) {
+		debugmsg("Setting servo position...");
+	}
 	servo[srv] = pos;
+}
+
+//sets the debug value
+void setDebug(bool newVal) {
+	if (debug) {
+		debugmsg("Disabling debug mode...");
+	}
+	debug = newVal;
+	if (debug) {
+		debugmsg("Debug mode active!");
+	}
+}
+
+//inverts a boolean
+void invertBool(bool &toInvert) {
+	if (debug) {
+		debugmsg("Inverting boolean...");
+	}
+	toInvert = !toInvert;
+}
+
+//mainly for internal use, but can be used if you really want to
+void debugmsg(char *msg) {
+	char *t = "[DEBUG]: ";
+	writeDebugStreamLine(msg);
 }
