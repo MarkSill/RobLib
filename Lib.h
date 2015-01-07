@@ -17,7 +17,7 @@ struct arrayInt {
 };
 
 //function declearations
-void setup(struct arrayInt drive, struct arrayInt turnl, struct arrayInt turnr, bool turndrive);
+void setup(struct arrayInt drive, int numDrive, struct arrayInt turnl, struct arrayInt turnr, int numTurn, bool turndrive);
 void moveAll(int value);
 void rstopAll();
 void turn(bool dir, int value);
