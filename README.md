@@ -5,7 +5,7 @@ A library meant for making ROBOTC programs more easily.
 
 Functions
 ====
-`void setup(struct intArray drive, int numDrive, struct intArray turnl, struct intArray turnr, int numTurn, bool turndrive)`:
+`void setup(intArray drive, int numDrive, intArray turnl, intArray turnr, int numTurn, bool turndrive)`:
 Setups the library using specified parameters.
 
 `void moveAll(int value)`:
