@@ -44,7 +44,7 @@ int tleft[MAX_MOTOR_ARRAY_SIZE];
 /**
 sets up the library
 */
-void setup(struct arrayInt drive, int numDrive, struct arrayInt turnl, struct arrayInt turnr, int numTurn, bool turndrive) {
+void setup(arrayInt drive, int numDrive, arrayInt turnl, arrayInt turnr, int numTurn, bool turndrive) {
 	if (debug) {
 		debugmsg("Setting up motors...");
 	}
@@ -143,6 +143,6 @@ void invertBool(bool &toInvert) {
 
 //mainly for internal use, but can be used if you really want to
 void debugmsg(char *msg) {
-	char *t = "[DEBUG]: ";
+	//char *t = "[DEBUG]: ";
 	writeDebugStreamLine(msg);
 }
